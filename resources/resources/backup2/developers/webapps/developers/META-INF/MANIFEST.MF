@@ -1,0 +1,15 @@
+Manifest-Version: 1.0
+Created-By: Apache Maven 3.6.0
+Built-By: root
+Build-Jdk: 11.0.5
+Implementation-Title: Student
+Implementation-Version: 1.0
+Implementation-Vendor-Id: com.main
+Implementation-URL: https://projects.spring.io/spring-boot/#/spring-boot
+ -starter-parent/developers
+Main-Class: org.springframework.boot.loader.WarLauncher
+Start-Class: config.StudentApplication
+Spring-Boot-Version: 2.1.4.RELEASE
+Spring-Boot-Classes: WEB-INF/classes/
+Spring-Boot-Lib: WEB-INF/lib/
+
