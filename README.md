@@ -25,6 +25,21 @@ $yum install git -y && yum install wget -y && yum install unzip -y && yum instal
 $wget https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip
 
 $unzip terraform_0.12.24_linux_amd64.zip && mv terraform /bin/ && rm -rf ./terraform*
+add repo
+
+$vi /etc/yum.repos.d/ansible.repo
+
+[Ansible]
+
+name = ansible
+
+baseurl = https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/
+
+enabled = 1
+
+gpgcheck = 0
+
+$yum install ansible -y
 
 
 1.Traditional Web Application/Monolithic based Web Application
