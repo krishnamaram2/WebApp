@@ -27,13 +27,15 @@ $wget https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_a
 $unzip terraform_0.12.24_linux_amd64.zip && mv terraform /bin/ && rm -rf ./terraform*
 
 
-Traditional Web Application
-==============================
+1.Traditional Web Application/Monolithic based Web Application
+=================================================================
+
+
 Manual Installation and set up  for 3-tier Web application
 ================================================================
 
 
-1.Web Server(Apache HTTP) Set up
+a.Web Server(Apache HTTP) Set up
 =====================================
 
 Step 1: Launch EC2 instance
@@ -58,7 +60,7 @@ $less dist/main.js |  grep this.baseUrl = 'http://<app-server-ip>:8080/Student/a
 $cp -rf dist /var/www/html
 
 
-2.App Server(Apache Tomcat) Set up
+b.App Server(Apache Tomcat) Set up
 ========================================
 
 Step 1: Launch EC2 instance
@@ -152,7 +154,7 @@ $cp -rf Student.war /opt/tomcat/webapps
 $less /opt/tomcat/webapps/Student/WEB-INF/classes/application.properties | grep db.url= jdbc:mysql://<db-server-ip>:3306/indigo
  
  
-3.Database Server(MySQL) Set up
+c.Database Server(MySQL) Set up
 ====================================
 
 Step 1: Launch EC2 instance
@@ -199,17 +201,12 @@ Automation for 3-tier Web Application
 
 # Execution Flow
 
-To bring up infrastructure follow the below on your local machine
+1.Build Custom AMI using Packer
 
-Step 1: install necessary packages
 
-$yum update -y && yum upgrade -y
+2.Provision infra using Terraform
 
-$yum install git -y && yum install wget -y && yum install unzip -y && yum install curl -y && yum install epel-release
-
-$wget https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip
-
-$unzip terraform_0.12.24_linux_amd64.zip && mv terraform /bin/ && rm -rf ./terraform*
+3.Configure softwares using Ansible
 
 
 step 2: clone repo for terraform code
@@ -261,6 +258,7 @@ terraform init .
 $terraform validate -var-file=config.json .
 
 $terraform apply -var-file=config.json .
+
 
 Automation for 3-tier Web Application 
 =============================================
@@ -316,18 +314,18 @@ $git clone https://github.com/krishnamaram2/Configuration_Manager.git
 $cd Configuration_Manager/src
 
 
-1.Apache HTTP server
-=======================
+a.Apache HTTP server
+
 
 $ansible-playbook -i hosts webserver.yml
 
-2.Apache Tomcat server
-=============================
+b.Apache Tomcat server
+
 
 $ansible-playbook -i hosts appserver.yml
 
-3.MySQL server
-===================================
+c.MySQL server
+
 
 $ansible-playbook -i hosts dbserver.yml
 
@@ -352,8 +350,19 @@ $ansible-playbook -i hosts dbserver.yml
 
 
 
-Distributed Web Application
-===============================
+2.Distributed Web Application/Constainerized Web Application/Miscro services based web Application
+===================================================================================================
+
+
+
+
+
+
+
+
+
+
+
 
 
 
