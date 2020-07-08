@@ -18,6 +18,8 @@ To bring up infrastructure follow the below on your local machine
 
 Step 1: install necessary packages
 
+$vi hardening.sh
+
 $yum update -y && yum upgrade -y
 
 $yum install git -y && yum install wget -y && yum install unzip -y && yum install curl -y && yum install epel-release
