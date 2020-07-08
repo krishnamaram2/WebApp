@@ -11,8 +11,9 @@ SpringBoot 2 + Hibernate 5
 
 MySQL
 
-# Execution Flow
 
+Pre-Requisites
+=======================
 To bring up infrastructure follow the below on your local machine
 
 Step 1: install necessary packages
@@ -26,130 +27,8 @@ $wget https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_a
 $unzip terraform_0.12.24_linux_amd64.zip && mv terraform /bin/ && rm -rf ./terraform*
 
 
-step 2: clone repo for terraform code
-
-$git clone https://github.com/krishnamaram2/Infrastructure_Manager.git && cd Infrastructure_Manager/src
-
-Step 3: enter access key and secret key in the below files
-
-vi backend.tf
-
-terraform{
-
-backend "s3"{
-
-access_key = ""
-
-secret_key = ""
-
-region = "us-east-1"
-
-bucket = "<bucketname>"
-
-key = "<fileneame>"
-
-dynamodb_table = "<tablename>"
-
-}
-
-}
-
-vi config.json
-
-{
-
-"myregion" : "us-east-1",
-
-"myaccesskey" : "",
-
-"mysecretkey" : "",
-
-"myamiid" : "ami-0affd4508a5d2481b"
-
-}
-
-Step 4: execute the below terraform commands
-
-terraform init .
-
-$terraform validate -var-file=config.json .
-
-$terraform apply -var-file=config.json .
-
-Automation for 3-tier Web Application 
-=============================================
-
-Login on web/app/db server and execute the below commands
-
-Step 1: install necessary packages
-
-$yum update -y && yum upgrade -y
-
-$yum install git -y && yum install wget -y && yum install unzip -y && yum install curl -y && yum install epel-release
-
-add repo
-
-$vi /etc/yum.repos.d/ansible.repo
-
-[Ansible]
-
-name = ansible
-
-baseurl = https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/
-
-enabled = 1
-
-gpgcheck = 0
-
-$yum install ansible -y
-
-Step 2:  enable password authentication
-
-$sudo su -l
-
-$passwd root
-
-$vi /etc/ssh/sshd_config
-
-PasswordAuthentication yes
-
-permitroorlogin yes
-
-$systemctl restart sshd
-
-$ssh-keygen
-
-$ssh-copy-id root@localhost
-
- enter password for root user
-
-Step 3: clone repo for Ansible playbooks
-
-$git clone https://github.com/krishnamaram2/Configuration_Manager.git
-
-$cd Configuration_Manager/src
-
-
-1.Apache HTTP server
-=======================
-
-$ansible-playbook -i hosts webserver.yml
-
-2.Apache Tomcat server
-=============================
-
-$ansible-playbook -i hosts appserver.yml
-
-3.MySQL server
-===================================
-
-$ansible-playbook -i hosts dbserver.yml
-
-
-
-
-
-
+Traditional Web Application
+==============================
 Manual Installation and set up  for 3-tier Web application
 ================================================================
 
@@ -315,6 +194,148 @@ $mysql -u <user_name> -p indigo < indigo.sql
 
 
 
+Automation for 3-tier Web Application 
+=============================================
+
+# Execution Flow
+
+To bring up infrastructure follow the below on your local machine
+
+Step 1: install necessary packages
+
+$yum update -y && yum upgrade -y
+
+$yum install git -y && yum install wget -y && yum install unzip -y && yum install curl -y && yum install epel-release
+
+$wget https://releases.hashicorp.com/terraform/0.12.24/terraform_0.12.24_linux_amd64.zip
+
+$unzip terraform_0.12.24_linux_amd64.zip && mv terraform /bin/ && rm -rf ./terraform*
+
+
+step 2: clone repo for terraform code
+
+$git clone https://github.com/krishnamaram2/Infrastructure_Manager.git && cd Infrastructure_Manager/src
+
+Step 3: enter access key and secret key in the below files
+
+vi backend.tf
+
+terraform{
+
+backend "s3"{
+
+access_key = ""
+
+secret_key = ""
+
+region = "us-east-1"
+
+bucket = "<bucketname>"
+
+key = "<fileneame>"
+
+dynamodb_table = "<tablename>"
+
+}
+
+}
+
+vi config.json
+
+{
+
+"myregion" : "us-east-1",
+
+"myaccesskey" : "",
+
+"mysecretkey" : "",
+
+"myamiid" : "ami-0affd4508a5d2481b"
+
+}
+
+Step 4: execute the below terraform commands
+
+terraform init .
+
+$terraform validate -var-file=config.json .
+
+$terraform apply -var-file=config.json .
+
+Automation for 3-tier Web Application 
+=============================================
+
+Login on web/app/db server and execute the below commands
+
+Step 1: install necessary packages
+
+$yum update -y && yum upgrade -y
+
+$yum install git -y && yum install wget -y && yum install unzip -y && yum install curl -y && yum install epel-release
+
+add repo
+
+$vi /etc/yum.repos.d/ansible.repo
+
+[Ansible]
+
+name = ansible
+
+baseurl = https://releases.ansible.com/ansible/rpm/release/epel-7-x86_64/
+
+enabled = 1
+
+gpgcheck = 0
+
+$yum install ansible -y
+
+Step 2:  enable password authentication
+
+$sudo su -l
+
+$passwd root
+
+$vi /etc/ssh/sshd_config
+
+PasswordAuthentication yes
+
+permitroorlogin yes
+
+$systemctl restart sshd
+
+$ssh-keygen
+
+$ssh-copy-id root@localhost
+
+ enter password for root user
+
+Step 3: clone repo for Ansible playbooks
+
+$git clone https://github.com/krishnamaram2/Configuration_Manager.git
+
+$cd Configuration_Manager/src
+
+
+1.Apache HTTP server
+=======================
+
+$ansible-playbook -i hosts webserver.yml
+
+2.Apache Tomcat server
+=============================
+
+$ansible-playbook -i hosts appserver.yml
+
+3.MySQL server
+===================================
+
+$ansible-playbook -i hosts dbserver.yml
+
+
+
+
+
+
 
 
 
@@ -324,3 +345,15 @@ $mysql -u <user_name> -p indigo < indigo.sql
 
 
  
+
+
+
+
+
+
+
+Distributed Web Application
+===============================
+
+
+
