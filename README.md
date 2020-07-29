@@ -185,7 +185,7 @@ git clone https://github.com/krishnamaram2/Configuration_Manager.git
 
 cd Configuration_Manager/src/plays
 
-ansible-playbook -i hosts webapps.yml
+ansible-playbook -i hosts webapp.yml
 
 $sudo sh playbook.sh
 
