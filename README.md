@@ -57,7 +57,7 @@ $sudo useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
 
 $sudo yum install wget -y
 
-$wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.51/bin/apache-tomcat-8.5.51.tar.gz 
+$wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.57/bin/apache-tomcat-8.5.57.tar.gz 
 
 $sudo mkdir /opt/tomcat
 
