@@ -25,6 +25,7 @@ Step 2: install apache http server
 $sudo yum install httpd -y
 
 $sudo systemctl start httpd
+
 $sudo systemctl enable httpd
 
 Step 3: Build and deploy angular code into web server
@@ -33,9 +34,11 @@ $git clone https://github.com/krishnamaram2/WebApp.git
 
 $chown -R centos. /var/www/html
 
-$cp -rf ~/WebApp/binaries/dist/ /var/www/html/
+$cp -rf ~/WebApp/binaries/dist/* /var/www/html/
 
 $less /var/www/html/dist/main.js |  grep this.baseUrl = 'http://<app-server-ip>:8080/Student/api/'; note:have to edit two times(line no 314, 701)
+ 
+$http://PUBLIC-IP:80 
 
 
 b.App Server(Apache Tomcat) Set up
@@ -57,7 +60,7 @@ $sudo useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
 
 $sudo yum install wget -y
 
-$wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.57/bin/apache-tomcat-8.5.57.tar.gz 
+$wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.69/bin/apache-tomcat-8.5.69.tar.gz 
 
 $sudo mkdir /opt/tomcat
 
