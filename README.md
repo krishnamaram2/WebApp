@@ -65,8 +65,6 @@ $sudo groupadd tomcat
 
 $sudo useradd -M -s /bin/nologin -g tomcat -d /opt/tomcat tomcat
 
-$sudo yum install wget -y
-
 $wget https://downloads.apache.org/tomcat/tomcat-8/v8.5.69/bin/apache-tomcat-8.5.69.tar.gz 
 
 $sudo mkdir /opt/tomcat
@@ -132,11 +130,19 @@ $sudo systemctl start tomcat
 $sudo systemctl enable tomcat
 
 Step 4: build source code and deploy war file
+ 
+$cd /home/centos 
 
-$git clone https://github.com/krishnamaram2/WebApp.git
+$sudo git clone https://github.com/krishnamaram2/WebApp.git
 
-$cp -rf ~/WebApp/binaries/Student.war /opt/tomcat/webapps
-
+$sudo cp -rf ~/WebApp/binaries/Student.war /opt/tomcat/webapps
+ 
+$sudo vi /opt/tomcat/webapps/Student/WEB-INF/classes/application.properties (replace localhost with PUBLIC IP, db username and db password))
+ 
+$sudo systemctl start tomcat
+ 
+Note
+------
 $less /opt/tomcat/webapps/Student/WEB-INF/classes/application.properties | grep db.url= jdbc:mysql://<db-server-ip>:3306/indigo
  
 http://PUBLIC-IP:8080/Student/api/students-list
