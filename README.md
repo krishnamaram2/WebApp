@@ -151,10 +151,10 @@ $sudo rpm -Uvh mysql80-community-release-el7-1.noarch.rpm
 $sudo yum install mysql-server -y
 
 $sudo systemctl start mysqld
+ 
+$sudo grep 'temporary password' /var/log/mysqld.log
 
 $sudo mysql_secure_installation
-
-$sudo grep 'temporary password' /var/log/mysqld.log
 
 Step 3: create database and user for MySQL 
 
@@ -162,7 +162,7 @@ $mysql -u <<user>> -p
   
 mysql>create database indigo;
 
-mysql>CREATE USER 'cloud'@'%' IDENTIFIED BY 'St0ne$';
+mysql>CREATE USER 'cloud'@'%' IDENTIFIED BY 'St0ne$@123';
  
 mysql>GRANT ALL ON *.* TO 'cloud'@'%';
   
@@ -170,9 +170,7 @@ mysql>FLUSH PRIVILEGES;
 
 $git clone https://github.com/krishnamaram2/WebApp.git
 
-$cd WebApp/binary
-
-$mysql -u <user_name> -p indigo < indigo.sql
+$mysql -u <user_name> -p indigo < ~/WebApp/binaries/indigo.sql
 
 2.Traditional Web Application/Monolithic based Web Application automation
 =================================================================
