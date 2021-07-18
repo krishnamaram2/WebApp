@@ -128,11 +128,11 @@ Step 4: build source code and deploy war file
 
 $git clone https://github.com/krishnamaram2/WebApp.git
 
-$cd WebApp/binary
-
-$cp -rf Student.war /opt/tomcat/webapps
+$cp -rf ~/WebApp/binaries/Student.war /opt/tomcat/webapps
 
 $less /opt/tomcat/webapps/Student/WEB-INF/classes/application.properties | grep db.url= jdbc:mysql://<db-server-ip>:3306/indigo
+ 
+http://PUBLIC-IP:8080/Student
  
  
 c.Database Server(MySQL) Set up
@@ -162,9 +162,9 @@ $mysql -u <<user>> -p
   
 mysql>create database indigo;
 
-mysql>CREATE USER '<user_name>'@'%' IDENTIFIED BY '<passwd>';
+mysql>CREATE USER 'cloud'@'%' IDENTIFIED BY 'St0ne$';
  
-mysql>GRANT ALL ON *.* TO '<user>'@'%';
+mysql>GRANT ALL ON *.* TO 'cloud'@'%';
   
 mysql>FLUSH PRIVILEGES;
 
