@@ -28,17 +28,24 @@ $sudo systemctl start httpd
 
 $sudo systemctl enable httpd
 
-$chown -R centos. /var/www/html
+$sudo chown -R centos. /var/www/html
 
 Step 3: Build and deploy angular code into web server
 
-$git clone https://github.com/krishnamaram2/WebApp.git
+$sudo git clone https://github.com/krishnamaram2/WebApp.git
 
-$cp * -rf ~/WebApp/binaries/dist/* /var/www/html/
+$sudo cp * -rf ~/WebApp/binaries/dist/* /var/www/html/
 
-$less /var/www/html/main.js |  grep this.baseUrl = 'http://<app-server-ip>:8080/Student/api/'; note:have to edit two times(line no 314, 701)
+$sudo vi /var/www/html/main.js (Replace App Server IP with localhost in two lines  i.e 314 and 701)
+
+Note
+-----
+$less /var/www/html/main.js |  grep this.baseUrl = 'http://<APP-SERVER-IP>:8080/Student/api/'; note:have to edit two times(line no 314, 701)
+
+ Open the below from client
+ ---------------------------
  
-http://PUBLIC-IP:80 
+http://<PUBLIC-IP>:80 
 
 
 b.App Server(Apache Tomcat) Set up
