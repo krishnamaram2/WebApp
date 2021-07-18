@@ -34,11 +34,11 @@ $git clone https://github.com/krishnamaram2/WebApp.git
 
 $chown -R centos. /var/www/html
 
-$cp -rf ~/WebApp/binaries/dist/* /var/www/html/
+$cp * -rf ~/WebApp/binaries/dist/* /var/www/html/
 
-$less /var/www/html/dist/main.js |  grep this.baseUrl = 'http://<app-server-ip>:8080/Student/api/'; note:have to edit two times(line no 314, 701)
+$less /var/www/html/main.js |  grep this.baseUrl = 'http://<app-server-ip>:8080/Student/api/'; note:have to edit two times(line no 314, 701)
  
-$http://PUBLIC-IP:80 
+http://PUBLIC-IP:80 
 
 
 b.App Server(Apache Tomcat) Set up
@@ -132,7 +132,7 @@ $cp -rf ~/WebApp/binaries/Student.war /opt/tomcat/webapps
 
 $less /opt/tomcat/webapps/Student/WEB-INF/classes/application.properties | grep db.url= jdbc:mysql://<db-server-ip>:3306/indigo
  
-http://PUBLIC-IP:8080/Student
+http://PUBLIC-IP:8080/Student/api/students-list
  
  
 c.Database Server(MySQL) Set up
