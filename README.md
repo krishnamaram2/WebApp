@@ -31,11 +31,11 @@ Step 3: Build and deploy angular code into web server
 
 $git clone https://github.com/krishnamaram2/WebApp.git
 
-$cd WebApp/binary
+$chown -R centos. /var/www/html
 
-$less dist/main.js |  grep this.baseUrl = 'http://<app-server-ip>:8080/Student/api/'; note:have to edit two times(nile 314, 701)
+$cp -rf ~/WebApp/binaries/dist/ /var/www/html/
 
-$cp -rf dist /var/www/html
+$less /var/www/html/dist/main.js |  grep this.baseUrl = 'http://<app-server-ip>:8080/Student/api/'; note:have to edit two times(line no 314, 701)
 
 
 b.App Server(Apache Tomcat) Set up
