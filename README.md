@@ -28,11 +28,11 @@ $sudo systemctl start httpd
 
 $sudo systemctl enable httpd
 
+$chown -R centos. /var/www/html
+
 Step 3: Build and deploy angular code into web server
 
 $git clone https://github.com/krishnamaram2/WebApp.git
-
-$chown -R centos. /var/www/html
 
 $cp * -rf ~/WebApp/binaries/dist/* /var/www/html/
 
